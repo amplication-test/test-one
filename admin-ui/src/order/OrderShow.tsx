@@ -18,7 +18,6 @@ export const OrderShow = (props: ShowProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="Quantity" source="quantity" />
-        <TextField label="Discount" source="discount" />
         <TextField label="Total Price" source="totalPrice" />
         <ReferenceField
           label="Customer"
@@ -30,6 +29,7 @@ export const OrderShow = (props: ShowProps): React.ReactElement => {
         <ReferenceField label="Product" source="product.id" reference="Product">
           <TextField source={PRODUCT_TITLE_FIELD} />
         </ReferenceField>
+        <TextField label="Discount" source="discount" />
       </SimpleShowLayout>
     </Show>
   );

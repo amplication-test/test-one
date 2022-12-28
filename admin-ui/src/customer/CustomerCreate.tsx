@@ -18,8 +18,8 @@ export const CustomerCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <TextInput label="First Name" source="firstName" />
-        <TextInput label="Email" source="email" type="email" />
+        <TextInput label="Last Name" source="lastName" />
+        <TextInput label="Phone" source="phone" />
         <ReferenceArrayInput
           source="orders"
           reference="Order"
@@ -28,8 +28,8 @@ export const CustomerCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={OrderTitle} />
         </ReferenceArrayInput>
-        <TextInput label="Last Name" source="lastName" />
-        <TextInput label="Phone" source="phone" />
+        <TextInput label="First Name" source="firstName" />
+        <TextInput label="Email" source="email" type="email" />
         <ReferenceInput source="address.id" reference="Address" label="Address">
           <SelectInput optionText={AddressTitle} />
         </ReferenceInput>

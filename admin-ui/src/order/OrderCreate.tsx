@@ -15,7 +15,6 @@ export const OrderCreate = (props: CreateProps): React.ReactElement => {
     <Create {...props}>
       <SimpleForm>
         <NumberInput step={1} label="Quantity" source="quantity" />
-        <NumberInput label="Discount" source="discount" />
         <NumberInput step={1} label="Total Price" source="totalPrice" />
         <ReferenceInput
           source="customer.id"
@@ -27,6 +26,7 @@ export const OrderCreate = (props: CreateProps): React.ReactElement => {
         <ReferenceInput source="product.id" reference="Product" label="Product">
           <SelectInput optionText={ProductTitle} />
         </ReferenceInput>
+        <NumberInput label="Discount" source="discount" />
       </SimpleForm>
     </Create>
   );

@@ -66,7 +66,6 @@ export class OrderControllerBase {
         createdAt: true,
         updatedAt: true,
         quantity: true,
-        discount: true,
         totalPrice: true,
 
         customer: {
@@ -80,6 +79,8 @@ export class OrderControllerBase {
             id: true,
           },
         },
+
+        discount: true,
       },
     });
   }
@@ -103,7 +104,6 @@ export class OrderControllerBase {
         createdAt: true,
         updatedAt: true,
         quantity: true,
-        discount: true,
         totalPrice: true,
 
         customer: {
@@ -117,6 +117,8 @@ export class OrderControllerBase {
             id: true,
           },
         },
+
+        discount: true,
       },
     });
   }
@@ -141,7 +143,6 @@ export class OrderControllerBase {
         createdAt: true,
         updatedAt: true,
         quantity: true,
-        discount: true,
         totalPrice: true,
 
         customer: {
@@ -155,6 +156,8 @@ export class OrderControllerBase {
             id: true,
           },
         },
+
+        discount: true,
       },
     });
     if (result === null) {
@@ -202,7 +205,6 @@ export class OrderControllerBase {
           createdAt: true,
           updatedAt: true,
           quantity: true,
-          discount: true,
           totalPrice: true,
 
           customer: {
@@ -216,6 +218,8 @@ export class OrderControllerBase {
               id: true,
             },
           },
+
+          discount: true,
         },
       });
     } catch (error) {
@@ -248,7 +252,6 @@ export class OrderControllerBase {
           createdAt: true,
           updatedAt: true,
           quantity: true,
-          discount: true,
           totalPrice: true,
 
           customer: {
@@ -262,6 +265,8 @@ export class OrderControllerBase {
               id: true,
             },
           },
+
+          discount: true,
         },
       });
     } catch (error) {

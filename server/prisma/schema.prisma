@@ -24,45 +24,45 @@ model Order {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
   quantity   Int?
-  discount   Float?
   totalPrice Int?
   customer   Customer? @relation(fields: [customerId], references: [id])
   customerId String?
   product    Product?  @relation(fields: [productId], references: [id])
   productId  String?
+  discount   Float?
 }
 
 model Customer {
   id        String   @id @default(cuid())
-  firstName String?
-  email     String?
-  orders    Order[]
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
   lastName  String?
   phone     String?
+  orders    Order[]
+  updatedAt DateTime @updatedAt
+  firstName String?
+  email     String?
   address   Address? @relation(fields: [addressId], references: [id])
-  addressId String?
+  addressId Int?
 }
 
 model Address {
-  createdAt DateTime   @default(now())
-  address_2 String?
-  state     String?
-  zip       Int?
-  id        String     @id @default(cuid())
   updatedAt DateTime   @updatedAt
+  address_2 String?
+  createdAt DateTime   @default(now())
   address_1 String?
   city      String?
+  state     String?
+  zip       Int?
   customers Customer[]
+  id        Int        @id @default(autoincrement())
 }
 
 model Product {
-  createdAt   DateTime @default(now())
-  itemPrice   Float?
+  updatedAt   DateTime @updatedAt
+  description String?
   orders      Order[]
   id          String   @id @default(cuid())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
   name        String?
-  description String?
+  itemPrice   Float?
 }

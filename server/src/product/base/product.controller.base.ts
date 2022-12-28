@@ -51,12 +51,12 @@ export class ProductControllerBase {
     return await this.service.create({
       data: data,
       select: {
-        createdAt: true,
-        itemPrice: true,
-        id: true,
         updatedAt: true,
-        name: true,
         description: true,
+        id: true,
+        createdAt: true,
+        name: true,
+        itemPrice: true,
       },
     });
   }
@@ -76,12 +76,12 @@ export class ProductControllerBase {
     return this.service.findMany({
       ...args,
       select: {
-        createdAt: true,
-        itemPrice: true,
-        id: true,
         updatedAt: true,
-        name: true,
         description: true,
+        id: true,
+        createdAt: true,
+        name: true,
+        itemPrice: true,
       },
     });
   }
@@ -102,12 +102,12 @@ export class ProductControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
-        createdAt: true,
-        itemPrice: true,
-        id: true,
         updatedAt: true,
-        name: true,
         description: true,
+        id: true,
+        createdAt: true,
+        name: true,
+        itemPrice: true,
       },
     });
     if (result === null) {
@@ -137,12 +137,12 @@ export class ProductControllerBase {
         where: params,
         data: data,
         select: {
-          createdAt: true,
-          itemPrice: true,
-          id: true,
           updatedAt: true,
-          name: true,
           description: true,
+          id: true,
+          createdAt: true,
+          name: true,
+          itemPrice: true,
         },
       });
     } catch (error) {
@@ -171,12 +171,12 @@ export class ProductControllerBase {
       return await this.service.delete({
         where: params,
         select: {
-          createdAt: true,
-          itemPrice: true,
-          id: true,
           updatedAt: true,
-          name: true,
           description: true,
+          id: true,
+          createdAt: true,
+          name: true,
+          itemPrice: true,
         },
       });
     } catch (error) {
@@ -209,7 +209,6 @@ export class ProductControllerBase {
         createdAt: true,
         updatedAt: true,
         quantity: true,
-        discount: true,
         totalPrice: true,
 
         customer: {
@@ -223,6 +222,8 @@ export class ProductControllerBase {
             id: true,
           },
         },
+
+        discount: true,
       },
     });
     if (results === null) {

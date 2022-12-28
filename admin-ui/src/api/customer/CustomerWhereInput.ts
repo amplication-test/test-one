@@ -5,10 +5,10 @@ import { AddressWhereUniqueInput } from "../address/AddressWhereUniqueInput";
 
 export type CustomerWhereInput = {
   id?: StringFilter;
-  firstName?: StringNullableFilter;
-  email?: StringNullableFilter;
-  orders?: OrderListRelationFilter;
   lastName?: StringNullableFilter;
   phone?: StringNullableFilter;
+  orders?: OrderListRelationFilter;
+  firstName?: StringNullableFilter;
+  email?: StringNullableFilter;
   address?: AddressWhereUniqueInput;
 };

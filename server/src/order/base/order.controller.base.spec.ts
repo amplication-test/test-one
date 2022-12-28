@@ -23,16 +23,16 @@ const CREATE_INPUT = {
   createdAt: new Date(),
   updatedAt: new Date(),
   quantity: 42,
-  discount: 42.42,
   totalPrice: 42,
+  discount: 42.42,
 };
 const CREATE_RESULT = {
   id: "exampleId",
   createdAt: new Date(),
   updatedAt: new Date(),
   quantity: 42,
-  discount: 42.42,
   totalPrice: 42,
+  discount: 42.42,
 };
 const FIND_MANY_RESULT = [
   {
@@ -40,8 +40,8 @@ const FIND_MANY_RESULT = [
     createdAt: new Date(),
     updatedAt: new Date(),
     quantity: 42,
-    discount: 42.42,
     totalPrice: 42,
+    discount: 42.42,
   },
 ];
 const FIND_ONE_RESULT = {
@@ -49,8 +49,8 @@ const FIND_ONE_RESULT = {
   createdAt: new Date(),
   updatedAt: new Date(),
   quantity: 42,
-  discount: 42.42,
   totalPrice: 42,
+  discount: 42.42,
 };
 
 const service = {

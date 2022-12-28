@@ -15,8 +15,9 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
-import { StringFilter } from "../../util/StringFilter";
 import { CustomerListRelationFilter } from "../../customer/base/CustomerListRelationFilter";
+import { IntFilter } from "../../util/IntFilter";
+
 @InputType()
 class AddressWhereInput {
   @ApiProperty({
@@ -29,39 +30,6 @@ class AddressWhereInput {
     nullable: true,
   })
   address_2?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  state?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: IntNullableFilter,
-  })
-  @Type(() => IntNullableFilter)
-  @IsOptional()
-  @Field(() => IntNullableFilter, {
-    nullable: true,
-  })
-  zip?: IntNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringFilter,
-  })
-  @Type(() => StringFilter)
-  @IsOptional()
-  @Field(() => StringFilter, {
-    nullable: true,
-  })
-  id?: StringFilter;
 
   @ApiProperty({
     required: false,
@@ -87,6 +55,28 @@ class AddressWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  state?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: IntNullableFilter,
+  })
+  @Type(() => IntNullableFilter)
+  @IsOptional()
+  @Field(() => IntNullableFilter, {
+    nullable: true,
+  })
+  zip?: IntNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => CustomerListRelationFilter,
   })
   @ValidateNested()
@@ -96,5 +86,17 @@ class AddressWhereInput {
     nullable: true,
   })
   customers?: CustomerListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: IntFilter,
+  })
+  @Type(() => IntFilter)
+  @IsOptional()
+  @Field(() => IntFilter, {
+    nullable: true,
+  })
+  id?: IntFilter;
 }
+
 export { AddressWhereInput };

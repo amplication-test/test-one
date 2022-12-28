@@ -18,19 +18,18 @@ export const ProductShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <DateField source="createdAt" label="Created At" />
-        <TextField label="Item Price" source="itemPrice" />
-        <TextField label="ID" source="id" />
         <DateField source="updatedAt" label="Updated At" />
-        <TextField label="Name" source="name" />
         <TextField label="Description" source="description" />
+        <TextField label="ID" source="id" />
+        <DateField source="createdAt" label="Created At" />
+        <TextField label="Name" source="name" />
+        <TextField label="Item Price" source="itemPrice" />
         <ReferenceManyField reference="Order" target="ProductId" label="Orders">
           <Datagrid rowClick="show">
             <TextField label="ID" source="id" />
             <DateField source="createdAt" label="Created At" />
             <DateField source="updatedAt" label="Updated At" />
             <TextField label="Quantity" source="quantity" />
-            <TextField label="Discount" source="discount" />
             <TextField label="Total Price" source="totalPrice" />
             <ReferenceField
               label="Customer"
@@ -46,6 +45,7 @@ export const ProductShow = (props: ShowProps): React.ReactElement => {
             >
               <TextField source={PRODUCT_TITLE_FIELD} />
             </ReferenceField>
+            <TextField label="Discount" source="discount" />
           </Datagrid>
         </ReferenceManyField>
       </SimpleShowLayout>
