@@ -17,6 +17,7 @@ import { IsOptional, ValidateNested } from "class-validator";
 import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+
 @InputType()
 class ProductWhereInput {
   @ApiProperty({
@@ -75,4 +76,5 @@ class ProductWhereInput {
   })
   description?: StringNullableFilter;
 }
+
 export { ProductWhereInput };
