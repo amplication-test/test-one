@@ -20,41 +20,41 @@ const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
   id: "exampleId",
-  firstName: "exampleFirstName",
-  email: "exampleEmail",
   createdAt: new Date(),
-  updatedAt: new Date(),
   lastName: "exampleLastName",
   phone: "examplePhone",
+  updatedAt: new Date(),
+  firstName: "exampleFirstName",
+  email: "exampleEmail",
 };
 const CREATE_RESULT = {
   id: "exampleId",
-  firstName: "exampleFirstName",
-  email: "exampleEmail",
   createdAt: new Date(),
-  updatedAt: new Date(),
   lastName: "exampleLastName",
   phone: "examplePhone",
+  updatedAt: new Date(),
+  firstName: "exampleFirstName",
+  email: "exampleEmail",
 };
 const FIND_MANY_RESULT = [
   {
     id: "exampleId",
-    firstName: "exampleFirstName",
-    email: "exampleEmail",
     createdAt: new Date(),
-    updatedAt: new Date(),
     lastName: "exampleLastName",
     phone: "examplePhone",
+    updatedAt: new Date(),
+    firstName: "exampleFirstName",
+    email: "exampleEmail",
   },
 ];
 const FIND_ONE_RESULT = {
   id: "exampleId",
-  firstName: "exampleFirstName",
-  email: "exampleEmail",
   createdAt: new Date(),
-  updatedAt: new Date(),
   lastName: "exampleLastName",
   phone: "examplePhone",
+  updatedAt: new Date(),
+  firstName: "exampleFirstName",
+  email: "exampleEmail",
 };
 
 const service = {

@@ -20,6 +20,7 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { Customer } from "../../customer/base/Customer";
+
 @ObjectType()
 class Address {
   @ApiProperty({
@@ -28,7 +29,7 @@ class Address {
   @IsDate()
   @Type(() => Date)
   @Field(() => Date)
-  createdAt!: Date;
+  updatedAt!: Date;
 
   @ApiProperty({
     required: false,
@@ -42,42 +43,12 @@ class Address {
   address_2!: string | null;
 
   @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  state!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  zip!: number | null;
-
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  id!: string;
-
-  @ApiProperty({
     required: true,
   })
   @IsDate()
   @Type(() => Date)
   @Field(() => Date)
-  updatedAt!: Date;
+  createdAt!: Date;
 
   @ApiProperty({
     required: false,
@@ -103,11 +74,42 @@ class Address {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  state!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  zip!: number | null;
+
+  @ApiProperty({
+    required: false,
     type: () => [Customer],
   })
   @ValidateNested()
   @Type(() => Customer)
   @IsOptional()
   customers?: Array<Customer>;
+
+  @ApiProperty({
+    required: true,
+    type: Number,
+  })
+  @IsInt()
+  @Field(() => Number)
+  id!: number;
 }
+
 export { Address };

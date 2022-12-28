@@ -51,14 +51,14 @@ export class AddressControllerBase {
     return await this.service.create({
       data: data,
       select: {
-        createdAt: true,
+        updatedAt: true,
         address_2: true,
+        createdAt: true,
+        address_1: true,
+        city: true,
         state: true,
         zip: true,
         id: true,
-        updatedAt: true,
-        address_1: true,
-        city: true,
       },
     });
   }
@@ -78,14 +78,14 @@ export class AddressControllerBase {
     return this.service.findMany({
       ...args,
       select: {
-        createdAt: true,
+        updatedAt: true,
         address_2: true,
+        createdAt: true,
+        address_1: true,
+        city: true,
         state: true,
         zip: true,
         id: true,
-        updatedAt: true,
-        address_1: true,
-        city: true,
       },
     });
   }
@@ -106,14 +106,14 @@ export class AddressControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
-        createdAt: true,
+        updatedAt: true,
         address_2: true,
+        createdAt: true,
+        address_1: true,
+        city: true,
         state: true,
         zip: true,
         id: true,
-        updatedAt: true,
-        address_1: true,
-        city: true,
       },
     });
     if (result === null) {
@@ -143,14 +143,14 @@ export class AddressControllerBase {
         where: params,
         data: data,
         select: {
-          createdAt: true,
+          updatedAt: true,
           address_2: true,
+          createdAt: true,
+          address_1: true,
+          city: true,
           state: true,
           zip: true,
           id: true,
-          updatedAt: true,
-          address_1: true,
-          city: true,
         },
       });
     } catch (error) {
@@ -179,14 +179,14 @@ export class AddressControllerBase {
       return await this.service.delete({
         where: params,
         select: {
-          createdAt: true,
+          updatedAt: true,
           address_2: true,
+          createdAt: true,
+          address_1: true,
+          city: true,
           state: true,
           zip: true,
           id: true,
-          updatedAt: true,
-          address_1: true,
-          city: true,
         },
       });
     } catch (error) {
@@ -216,12 +216,12 @@ export class AddressControllerBase {
       ...query,
       select: {
         id: true,
-        firstName: true,
-        email: true,
         createdAt: true,
-        updatedAt: true,
         lastName: true,
         phone: true,
+        updatedAt: true,
+        firstName: true,
+        email: true,
 
         address: {
           select: {

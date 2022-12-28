@@ -11,24 +11,25 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { FloatNullableFilter } from "../../util/FloatNullableFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { FloatNullableFilter } from "../../util/FloatNullableFilter";
+
 @InputType()
 class ProductWhereInput {
   @ApiProperty({
     required: false,
-    type: FloatNullableFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => FloatNullableFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => FloatNullableFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  itemPrice?: FloatNullableFilter;
+  description?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -66,13 +67,14 @@ class ProductWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringNullableFilter,
+    type: FloatNullableFilter,
   })
-  @Type(() => StringNullableFilter)
+  @Type(() => FloatNullableFilter)
   @IsOptional()
-  @Field(() => StringNullableFilter, {
+  @Field(() => FloatNullableFilter, {
     nullable: true,
   })
-  description?: StringNullableFilter;
+  itemPrice?: FloatNullableFilter;
 }
+
 export { ProductWhereInput };

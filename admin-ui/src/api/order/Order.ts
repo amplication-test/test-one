@@ -6,8 +6,8 @@ export type Order = {
   createdAt: Date;
   updatedAt: Date;
   quantity: number | null;
-  discount: number | null;
   totalPrice: number | null;
   customer?: Customer | null;
   product?: Product | null;
+  discount: number | null;
 };

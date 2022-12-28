@@ -15,42 +15,9 @@ import { IsString, IsOptional, ValidateNested } from "class-validator";
 import { OrderUpdateManyWithoutCustomersInput } from "./OrderUpdateManyWithoutCustomersInput";
 import { Type } from "class-transformer";
 import { AddressWhereUniqueInput } from "../../address/base/AddressWhereUniqueInput";
+
 @InputType()
 class CustomerUpdateInput {
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  firstName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  email?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => OrderUpdateManyWithoutCustomersInput,
-  })
-  @ValidateNested()
-  @Type(() => OrderUpdateManyWithoutCustomersInput)
-  @IsOptional()
-  @Field(() => OrderUpdateManyWithoutCustomersInput, {
-    nullable: true,
-  })
-  orders?: OrderUpdateManyWithoutCustomersInput;
-
   @ApiProperty({
     required: false,
     type: String,
@@ -75,6 +42,40 @@ class CustomerUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => OrderUpdateManyWithoutCustomersInput,
+  })
+  @ValidateNested()
+  @Type(() => OrderUpdateManyWithoutCustomersInput)
+  @IsOptional()
+  @Field(() => OrderUpdateManyWithoutCustomersInput, {
+    nullable: true,
+  })
+  orders?: OrderUpdateManyWithoutCustomersInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  firstName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  email?: string | null;
+
+  @ApiProperty({
+    required: false,
     type: () => AddressWhereUniqueInput,
   })
   @ValidateNested()
@@ -85,4 +86,5 @@ class CustomerUpdateInput {
   })
   address?: AddressWhereUniqueInput | null;
 }
+
 export { CustomerUpdateInput };

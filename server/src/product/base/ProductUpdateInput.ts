@@ -12,25 +12,26 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
-  IsNumber,
+  IsString,
   IsOptional,
   ValidateNested,
-  IsString,
+  IsNumber,
 } from "class-validator";
 import { OrderUpdateManyWithoutProductsInput } from "./OrderUpdateManyWithoutProductsInput";
 import { Type } from "class-transformer";
+
 @InputType()
 class ProductUpdateInput {
   @ApiProperty({
     required: false,
-    type: Number,
+    type: String,
   })
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  @Field(() => Number, {
+  @Field(() => String, {
     nullable: true,
   })
-  itemPrice?: number | null;
+  description?: string | null;
 
   @ApiProperty({
     required: false,
@@ -57,13 +58,14 @@ class ProductUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: Number,
   })
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => Number, {
     nullable: true,
   })
-  description?: string | null;
+  itemPrice?: number | null;
 }
+
 export { ProductUpdateInput };

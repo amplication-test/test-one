@@ -1,5 +1,5 @@
 {
-  "name": "@sample-service/server",
+  "name": "@sample-service-1/server",
   "private": true,
   "scripts": {
     "start": "nest start",

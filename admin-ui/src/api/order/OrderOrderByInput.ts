@@ -5,8 +5,8 @@ export type OrderOrderByInput = {
   createdAt?: SortOrder;
   updatedAt?: SortOrder;
   quantity?: SortOrder;
-  discount?: SortOrder;
   totalPrice?: SortOrder;
   customerId?: SortOrder;
   productId?: SortOrder;
+  discount?: SortOrder;
 };

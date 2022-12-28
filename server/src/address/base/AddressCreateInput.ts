@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, IsInt, ValidateNested } from "class-validator";
 import { CustomerCreateNestedManyWithoutAddressesInput } from "./CustomerCreateNestedManyWithoutAddressesInput";
 import { Type } from "class-transformer";
+
 @InputType()
 class AddressCreateInput {
   @ApiProperty({
@@ -26,28 +27,6 @@ class AddressCreateInput {
     nullable: true,
   })
   address_2?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  state?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  zip?: number | null;
 
   @ApiProperty({
     required: false,
@@ -73,6 +52,28 @@ class AddressCreateInput {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  state?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  zip?: number | null;
+
+  @ApiProperty({
+    required: false,
     type: () => CustomerCreateNestedManyWithoutAddressesInput,
   })
   @ValidateNested()
@@ -83,4 +84,5 @@ class AddressCreateInput {
   })
   customers?: CustomerCreateNestedManyWithoutAddressesInput;
 }
+
 export { AddressCreateInput };

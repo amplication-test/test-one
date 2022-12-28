@@ -17,14 +17,14 @@ export const AddressShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <DateField source="createdAt" label="Created At" />
+        <DateField source="updatedAt" label="Updated At" />
         <TextField label="Address 2" source="address_2" />
+        <DateField source="createdAt" label="Created At" />
+        <TextField label="Address 1" source="address_1" />
+        <TextField label="City" source="city" />
         <TextField label="State" source="state" />
         <TextField label="Zip" source="zip" />
         <TextField label="ID" source="id" />
-        <DateField source="updatedAt" label="Updated At" />
-        <TextField label="Address 1" source="address_1" />
-        <TextField label="City" source="city" />
         <ReferenceManyField
           reference="Customer"
           target="AddressId"
@@ -32,12 +32,12 @@ export const AddressShow = (props: ShowProps): React.ReactElement => {
         >
           <Datagrid rowClick="show">
             <TextField label="ID" source="id" />
-            <TextField label="First Name" source="firstName" />
-            <TextField label="Email" source="email" />
             <DateField source="createdAt" label="Created At" />
-            <DateField source="updatedAt" label="Updated At" />
             <TextField label="Last Name" source="lastName" />
             <TextField label="Phone" source="phone" />
+            <DateField source="updatedAt" label="Updated At" />
+            <TextField label="First Name" source="firstName" />
+            <TextField label="Email" source="email" />
             <ReferenceField
               label="Address"
               source="address.id"

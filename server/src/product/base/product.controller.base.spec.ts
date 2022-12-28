@@ -19,38 +19,38 @@ import { ProductService } from "../product.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  createdAt: new Date(),
-  itemPrice: 42.42,
-  id: "exampleId",
   updatedAt: new Date(),
-  name: "exampleName",
   description: "exampleDescription",
+  id: "exampleId",
+  createdAt: new Date(),
+  name: "exampleName",
+  itemPrice: 42.42,
 };
 const CREATE_RESULT = {
-  createdAt: new Date(),
-  itemPrice: 42.42,
-  id: "exampleId",
   updatedAt: new Date(),
-  name: "exampleName",
   description: "exampleDescription",
+  id: "exampleId",
+  createdAt: new Date(),
+  name: "exampleName",
+  itemPrice: 42.42,
 };
 const FIND_MANY_RESULT = [
   {
-    createdAt: new Date(),
-    itemPrice: 42.42,
-    id: "exampleId",
     updatedAt: new Date(),
-    name: "exampleName",
     description: "exampleDescription",
+    id: "exampleId",
+    createdAt: new Date(),
+    name: "exampleName",
+    itemPrice: 42.42,
   },
 ];
 const FIND_ONE_RESULT = {
-  createdAt: new Date(),
-  itemPrice: 42.42,
-  id: "exampleId",
   updatedAt: new Date(),
-  name: "exampleName",
   description: "exampleDescription",
+  id: "exampleId",
+  createdAt: new Date(),
+  name: "exampleName",
+  itemPrice: 42.42,
 };
 
 const service = {
@@ -135,8 +135,8 @@ describe("Product", () => {
       .expect(HttpStatus.CREATED)
       .expect({
         ...CREATE_RESULT,
-        createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
+        createdAt: CREATE_RESULT.createdAt.toISOString(),
       });
   });
 
@@ -147,8 +147,8 @@ describe("Product", () => {
       .expect([
         {
           ...FIND_MANY_RESULT[0],
-          createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
+          createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
         },
       ]);
   });
@@ -170,8 +170,8 @@ describe("Product", () => {
       .expect(HttpStatus.OK)
       .expect({
         ...FIND_ONE_RESULT,
-        createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
+        createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
       });
   });
 
@@ -183,8 +183,8 @@ describe("Product", () => {
       .expect(HttpStatus.CREATED)
       .expect({
         ...CREATE_RESULT,
-        createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
+        createdAt: CREATE_RESULT.createdAt.toISOString(),
       })
       .then(function () {
         agent

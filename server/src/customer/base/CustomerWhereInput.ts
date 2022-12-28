@@ -17,6 +17,7 @@ import { IsOptional, ValidateNested } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
 import { AddressWhereUniqueInput } from "../../address/base/AddressWhereUniqueInput";
+
 @InputType()
 class CustomerWhereInput {
   @ApiProperty({
@@ -29,40 +30,6 @@ class CustomerWhereInput {
     nullable: true,
   })
   id?: StringFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  firstName?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  email?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => OrderListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => OrderListRelationFilter)
-  @IsOptional()
-  @Field(() => OrderListRelationFilter, {
-    nullable: true,
-  })
-  orders?: OrderListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -88,6 +55,40 @@ class CustomerWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => OrderListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => OrderListRelationFilter)
+  @IsOptional()
+  @Field(() => OrderListRelationFilter, {
+    nullable: true,
+  })
+  orders?: OrderListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  firstName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  email?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => AddressWhereUniqueInput,
   })
   @ValidateNested()
@@ -98,4 +99,5 @@ class CustomerWhereInput {
   })
   address?: AddressWhereUniqueInput;
 }
+
 export { CustomerWhereInput };

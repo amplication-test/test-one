@@ -3,12 +3,12 @@ import { Address } from "../address/Address";
 
 export type Customer = {
   id: string;
-  firstName: string | null;
-  email: string | null;
-  orders?: Array<Order>;
   createdAt: Date;
-  updatedAt: Date;
   lastName: string | null;
   phone: string | null;
+  orders?: Array<Order>;
+  updatedAt: Date;
+  firstName: string | null;
+  email: string | null;
   address?: Address | null;
 };

@@ -15,42 +15,9 @@ import { IsString, IsOptional, ValidateNested } from "class-validator";
 import { OrderCreateNestedManyWithoutCustomersInput } from "./OrderCreateNestedManyWithoutCustomersInput";
 import { Type } from "class-transformer";
 import { AddressWhereUniqueInput } from "../../address/base/AddressWhereUniqueInput";
+
 @InputType()
 class CustomerCreateInput {
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  firstName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  email?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => OrderCreateNestedManyWithoutCustomersInput,
-  })
-  @ValidateNested()
-  @Type(() => OrderCreateNestedManyWithoutCustomersInput)
-  @IsOptional()
-  @Field(() => OrderCreateNestedManyWithoutCustomersInput, {
-    nullable: true,
-  })
-  orders?: OrderCreateNestedManyWithoutCustomersInput;
-
   @ApiProperty({
     required: false,
     type: String,
@@ -75,6 +42,40 @@ class CustomerCreateInput {
 
   @ApiProperty({
     required: false,
+    type: () => OrderCreateNestedManyWithoutCustomersInput,
+  })
+  @ValidateNested()
+  @Type(() => OrderCreateNestedManyWithoutCustomersInput)
+  @IsOptional()
+  @Field(() => OrderCreateNestedManyWithoutCustomersInput, {
+    nullable: true,
+  })
+  orders?: OrderCreateNestedManyWithoutCustomersInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  firstName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  email?: string | null;
+
+  @ApiProperty({
+    required: false,
     type: () => AddressWhereUniqueInput,
   })
   @ValidateNested()
@@ -85,4 +86,5 @@ class CustomerCreateInput {
   })
   address?: AddressWhereUniqueInput | null;
 }
+
 export { CustomerCreateInput };

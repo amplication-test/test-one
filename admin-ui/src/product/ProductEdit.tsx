@@ -4,10 +4,10 @@ import {
   Edit,
   SimpleForm,
   EditProps,
-  NumberInput,
+  TextInput,
   ReferenceArrayInput,
   SelectArrayInput,
-  TextInput,
+  NumberInput,
 } from "react-admin";
 
 import { OrderTitle } from "../order/OrderTitle";
@@ -16,7 +16,7 @@ export const ProductEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
-        <NumberInput label="Item Price" source="itemPrice" />
+        <TextInput label="Description" multiline source="description" />
         <ReferenceArrayInput
           source="orders"
           reference="Order"
@@ -26,7 +26,7 @@ export const ProductEdit = (props: EditProps): React.ReactElement => {
           <SelectArrayInput optionText={OrderTitle} />
         </ReferenceArrayInput>
         <TextInput label="Name" source="name" />
-        <TextInput label="Description" multiline source="description" />
+        <NumberInput label="Item Price" source="itemPrice" />
       </SimpleForm>
     </Edit>
   );

@@ -1,12 +1,12 @@
-import { FloatNullableFilter } from "../../util/FloatNullableFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { OrderListRelationFilter } from "../order/OrderListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 
 export type ProductWhereInput = {
-  itemPrice?: FloatNullableFilter;
+  description?: StringNullableFilter;
   orders?: OrderListRelationFilter;
   id?: StringFilter;
   name?: StringNullableFilter;
-  description?: StringNullableFilter;
+  itemPrice?: FloatNullableFilter;
 };

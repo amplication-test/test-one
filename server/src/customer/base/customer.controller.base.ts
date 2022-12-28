@@ -60,12 +60,12 @@ export class CustomerControllerBase {
       },
       select: {
         id: true,
-        firstName: true,
-        email: true,
         createdAt: true,
-        updatedAt: true,
         lastName: true,
         phone: true,
+        updatedAt: true,
+        firstName: true,
+        email: true,
 
         address: {
           select: {
@@ -92,12 +92,12 @@ export class CustomerControllerBase {
       ...args,
       select: {
         id: true,
-        firstName: true,
-        email: true,
         createdAt: true,
-        updatedAt: true,
         lastName: true,
         phone: true,
+        updatedAt: true,
+        firstName: true,
+        email: true,
 
         address: {
           select: {
@@ -125,12 +125,12 @@ export class CustomerControllerBase {
       where: params,
       select: {
         id: true,
-        firstName: true,
-        email: true,
         createdAt: true,
-        updatedAt: true,
         lastName: true,
         phone: true,
+        updatedAt: true,
+        firstName: true,
+        email: true,
 
         address: {
           select: {
@@ -175,12 +175,12 @@ export class CustomerControllerBase {
         },
         select: {
           id: true,
-          firstName: true,
-          email: true,
           createdAt: true,
-          updatedAt: true,
           lastName: true,
           phone: true,
+          updatedAt: true,
+          firstName: true,
+          email: true,
 
           address: {
             select: {
@@ -216,12 +216,12 @@ export class CustomerControllerBase {
         where: params,
         select: {
           id: true,
-          firstName: true,
-          email: true,
           createdAt: true,
-          updatedAt: true,
           lastName: true,
           phone: true,
+          updatedAt: true,
+          firstName: true,
+          email: true,
 
           address: {
             select: {
@@ -260,7 +260,6 @@ export class CustomerControllerBase {
         createdAt: true,
         updatedAt: true,
         quantity: true,
-        discount: true,
         totalPrice: true,
 
         customer: {
@@ -274,6 +273,8 @@ export class CustomerControllerBase {
             id: true,
           },
         },
+
+        discount: true,
       },
     });
     if (results === null) {

@@ -21,12 +21,12 @@ export const CustomerList = (props: ListProps): React.ReactElement => {
     >
       <Datagrid rowClick="show">
         <TextField label="ID" source="id" />
-        <TextField label="First Name" source="firstName" />
-        <TextField label="Email" source="email" />
         <DateField source="createdAt" label="Created At" />
-        <DateField source="updatedAt" label="Updated At" />
         <TextField label="Last Name" source="lastName" />
         <TextField label="Phone" source="phone" />
+        <DateField source="updatedAt" label="Updated At" />
+        <TextField label="First Name" source="firstName" />
+        <TextField label="Email" source="email" />
         <ReferenceField label="Address" source="address.id" reference="Address">
           <TextField source={ADDRESS_TITLE_FIELD} />
         </ReferenceField>

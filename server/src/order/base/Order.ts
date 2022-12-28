@@ -16,12 +16,13 @@ import {
   IsDate,
   IsInt,
   IsOptional,
-  IsNumber,
   ValidateNested,
+  IsNumber,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { Customer } from "../../customer/base/Customer";
 import { Product } from "../../product/base/Product";
+
 @ObjectType()
 class Order {
   @ApiProperty({
@@ -63,17 +64,6 @@ class Order {
     required: false,
     type: Number,
   })
-  @IsNumber()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  discount!: number | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
   @IsInt()
   @IsOptional()
   @Field(() => Number, {
@@ -98,5 +88,17 @@ class Order {
   @Type(() => Product)
   @IsOptional()
   product?: Product | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsNumber()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  discount!: number | null;
 }
+
 export { Order };

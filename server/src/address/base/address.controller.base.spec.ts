@@ -19,46 +19,46 @@ import { AddressService } from "../address.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  createdAt: new Date(),
-  address_2: "exampleAddress_2",
-  state: "exampleState",
-  zip: 42,
-  id: "exampleId",
   updatedAt: new Date(),
+  address_2: "exampleAddress_2",
+  createdAt: new Date(),
   address_1: "exampleAddress_1",
   city: "exampleCity",
+  state: "exampleState",
+  zip: 42,
+  id: 42,
 };
 const CREATE_RESULT = {
-  createdAt: new Date(),
-  address_2: "exampleAddress_2",
-  state: "exampleState",
-  zip: 42,
-  id: "exampleId",
   updatedAt: new Date(),
+  address_2: "exampleAddress_2",
+  createdAt: new Date(),
   address_1: "exampleAddress_1",
   city: "exampleCity",
+  state: "exampleState",
+  zip: 42,
+  id: 42,
 };
 const FIND_MANY_RESULT = [
   {
-    createdAt: new Date(),
-    address_2: "exampleAddress_2",
-    state: "exampleState",
-    zip: 42,
-    id: "exampleId",
     updatedAt: new Date(),
+    address_2: "exampleAddress_2",
+    createdAt: new Date(),
     address_1: "exampleAddress_1",
     city: "exampleCity",
+    state: "exampleState",
+    zip: 42,
+    id: 42,
   },
 ];
 const FIND_ONE_RESULT = {
-  createdAt: new Date(),
-  address_2: "exampleAddress_2",
-  state: "exampleState",
-  zip: 42,
-  id: "exampleId",
   updatedAt: new Date(),
+  address_2: "exampleAddress_2",
+  createdAt: new Date(),
   address_1: "exampleAddress_1",
   city: "exampleCity",
+  state: "exampleState",
+  zip: 42,
+  id: 42,
 };
 
 const service = {
@@ -143,8 +143,8 @@ describe("Address", () => {
       .expect(HttpStatus.CREATED)
       .expect({
         ...CREATE_RESULT,
-        createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
+        createdAt: CREATE_RESULT.createdAt.toISOString(),
       });
   });
 
@@ -155,8 +155,8 @@ describe("Address", () => {
       .expect([
         {
           ...FIND_MANY_RESULT[0],
-          createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
+          createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
         },
       ]);
   });
@@ -178,8 +178,8 @@ describe("Address", () => {
       .expect(HttpStatus.OK)
       .expect({
         ...FIND_ONE_RESULT,
-        createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
+        createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
       });
   });
 
@@ -191,8 +191,8 @@ describe("Address", () => {
       .expect(HttpStatus.CREATED)
       .expect({
         ...CREATE_RESULT,
-        createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
+        createdAt: CREATE_RESULT.createdAt.toISOString(),
       })
       .then(function () {
         agent
