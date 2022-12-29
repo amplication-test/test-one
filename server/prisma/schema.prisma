@@ -19,50 +19,17 @@ model User {
   roles     Json
 }
 
-model Order {
-  id         String    @id @default(cuid())
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  quantity   Int?
-  discount   Float?
-  totalPrice Int?
-  customer   Customer? @relation(fields: [customerId], references: [id])
-  customerId String?
-  product    Product?  @relation(fields: [productId], references: [id])
-  productId  String?
-}
-
-model Customer {
+model One {
   id        String   @id @default(cuid())
-  firstName String?
-  email     String?
-  orders    Order[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  lastName  String?
-  phone     String?
-  address   Address? @relation(fields: [addressId], references: [id])
-  addressId String?
+  manyes    Many?    @relation(fields: [manyesId], references: [id])
+  manyesId  String?
 }
 
-model Address {
-  createdAt DateTime   @default(now())
-  address_2 String?
-  state     String?
-  zip       Int?
-  id        String     @id @default(cuid())
-  updatedAt DateTime   @updatedAt
-  address_1 String?
-  city      String?
-  customers Customer[]
-}
-
-model Product {
-  createdAt   DateTime @default(now())
-  itemPrice   Float?
-  orders      Order[]
-  id          String   @id @default(cuid())
-  updatedAt   DateTime @updatedAt
-  name        String?
-  description String?
+model Many {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ones      One[]
 }
