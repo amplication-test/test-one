@@ -1,11 +1,19 @@
+import { OrganizationWhereUniqueInput } from "../organization/OrganizationWhereUniqueInput";
 import { OrderCreateNestedManyWithoutCustomersInput } from "./OrderCreateNestedManyWithoutCustomersInput";
-import { AddressWhereUniqueInput } from "../address/AddressWhereUniqueInput";
 
 export type CustomerCreateInput = {
+  email: string;
   firstName?: string | null;
-  email?: string | null;
-  orders?: OrderCreateNestedManyWithoutCustomersInput;
   lastName?: string | null;
-  phone?: string | null;
-  address?: AddressWhereUniqueInput | null;
+  isVip?: boolean | null;
+  birthData?: Date | null;
+  averageSale?: number | null;
+  favoriteNumber?: number | null;
+  geoLocation?: string | null;
+  comments?: string | null;
+  favoriteColors?: Array<"red" | "green" | "purple" | "yellow">;
+  customerType?: "platinum" | "gold" | "bronze" | "regular" | null;
+  organization?: OrganizationWhereUniqueInput | null;
+  vipOrganization?: OrganizationWhereUniqueInput | null;
+  orders?: OrderCreateNestedManyWithoutCustomersInput;
 };

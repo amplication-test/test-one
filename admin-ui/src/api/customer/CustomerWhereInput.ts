@@ -1,14 +1,29 @@
+import { IntFilter } from "../../util/IntFilter";
+import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
+import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { FloatNullableFilter } from "../../util/FloatNullableFilter";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
+import { OrganizationWhereUniqueInput } from "../organization/OrganizationWhereUniqueInput";
 import { OrderListRelationFilter } from "../order/OrderListRelationFilter";
-import { AddressWhereUniqueInput } from "../address/AddressWhereUniqueInput";
 
 export type CustomerWhereInput = {
-  id?: StringFilter;
+  id?: IntFilter;
+  createdAt?: DateTimeFilter;
+  updatedAt?: DateTimeFilter;
+  email?: StringFilter;
   firstName?: StringNullableFilter;
-  email?: StringNullableFilter;
-  orders?: OrderListRelationFilter;
   lastName?: StringNullableFilter;
-  phone?: StringNullableFilter;
-  address?: AddressWhereUniqueInput;
+  isVip?: BooleanNullableFilter;
+  birthData?: DateTimeNullableFilter;
+  averageSale?: FloatNullableFilter;
+  favoriteNumber?: IntNullableFilter;
+  geoLocation?: StringNullableFilter;
+  comments?: StringNullableFilter;
+  customerType?: "platinum" | "gold" | "bronze" | "regular";
+  organization?: OrganizationWhereUniqueInput;
+  vipOrganization?: OrganizationWhereUniqueInput;
+  orders?: OrderListRelationFilter;
 };

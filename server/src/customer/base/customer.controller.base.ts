@@ -21,6 +21,7 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { CustomerService } from "../customer.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { CustomerCreateInput } from "./CustomerCreateInput";
 import { CustomerWhereInput } from "./CustomerWhereInput";
 import { CustomerWhereUniqueInput } from "./CustomerWhereUniqueInput";
@@ -30,7 +31,7 @@ import { Customer } from "./Customer";
 import { OrderFindManyArgs } from "../../order/base/OrderFindManyArgs";
 import { Order } from "../../order/base/Order";
 import { OrderWhereUniqueInput } from "../../order/base/OrderWhereUniqueInput";
-@swagger.ApiBearerAuth()
+@swagger.ApiBasicAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class CustomerControllerBase {
   constructor(
@@ -52,22 +53,41 @@ export class CustomerControllerBase {
       data: {
         ...data,
 
-        address: data.address
+        organization: data.organization
           ? {
-              connect: data.address,
+              connect: data.organization,
+            }
+          : undefined,
+
+        vipOrganization: data.vipOrganization
+          ? {
+              connect: data.vipOrganization,
             }
           : undefined,
       },
       select: {
         id: true,
-        firstName: true,
-        email: true,
         createdAt: true,
         updatedAt: true,
+        email: true,
+        firstName: true,
         lastName: true,
-        phone: true,
+        isVip: true,
+        birthData: true,
+        averageSale: true,
+        favoriteNumber: true,
+        geoLocation: true,
+        comments: true,
+        favoriteColors: true,
+        customerType: true,
 
-        address: {
+        organization: {
+          select: {
+            id: true,
+          },
+        },
+
+        vipOrganization: {
           select: {
             id: true,
           },
@@ -92,14 +112,27 @@ export class CustomerControllerBase {
       ...args,
       select: {
         id: true,
-        firstName: true,
-        email: true,
         createdAt: true,
         updatedAt: true,
+        email: true,
+        firstName: true,
         lastName: true,
-        phone: true,
+        isVip: true,
+        birthData: true,
+        averageSale: true,
+        favoriteNumber: true,
+        geoLocation: true,
+        comments: true,
+        favoriteColors: true,
+        customerType: true,
 
-        address: {
+        organization: {
+          select: {
+            id: true,
+          },
+        },
+
+        vipOrganization: {
           select: {
             id: true,
           },
@@ -125,14 +158,27 @@ export class CustomerControllerBase {
       where: params,
       select: {
         id: true,
-        firstName: true,
-        email: true,
         createdAt: true,
         updatedAt: true,
+        email: true,
+        firstName: true,
         lastName: true,
-        phone: true,
+        isVip: true,
+        birthData: true,
+        averageSale: true,
+        favoriteNumber: true,
+        geoLocation: true,
+        comments: true,
+        favoriteColors: true,
+        customerType: true,
 
-        address: {
+        organization: {
+          select: {
+            id: true,
+          },
+        },
+
+        vipOrganization: {
           select: {
             id: true,
           },
@@ -167,22 +213,41 @@ export class CustomerControllerBase {
         data: {
           ...data,
 
-          address: data.address
+          organization: data.organization
             ? {
-                connect: data.address,
+                connect: data.organization,
+              }
+            : undefined,
+
+          vipOrganization: data.vipOrganization
+            ? {
+                connect: data.vipOrganization,
               }
             : undefined,
         },
         select: {
           id: true,
-          firstName: true,
-          email: true,
           createdAt: true,
           updatedAt: true,
+          email: true,
+          firstName: true,
           lastName: true,
-          phone: true,
+          isVip: true,
+          birthData: true,
+          averageSale: true,
+          favoriteNumber: true,
+          geoLocation: true,
+          comments: true,
+          favoriteColors: true,
+          customerType: true,
 
-          address: {
+          organization: {
+            select: {
+              id: true,
+            },
+          },
+
+          vipOrganization: {
             select: {
               id: true,
             },
@@ -216,14 +281,27 @@ export class CustomerControllerBase {
         where: params,
         select: {
           id: true,
-          firstName: true,
-          email: true,
           createdAt: true,
           updatedAt: true,
+          email: true,
+          firstName: true,
           lastName: true,
-          phone: true,
+          isVip: true,
+          birthData: true,
+          averageSale: true,
+          favoriteNumber: true,
+          geoLocation: true,
+          comments: true,
+          favoriteColors: true,
+          customerType: true,
 
-          address: {
+          organization: {
+            select: {
+              id: true,
+            },
+          },
+
+          vipOrganization: {
             select: {
               id: true,
             },
@@ -240,12 +318,7 @@ export class CustomerControllerBase {
     }
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "Order",
-    action: "read",
-    possession: "any",
-  })
+  @Public()
   @common.Get("/:id/orders")
   @ApiNestedQuery(OrderFindManyArgs)
   async findManyOrders(
@@ -259,9 +332,6 @@ export class CustomerControllerBase {
         id: true,
         createdAt: true,
         updatedAt: true,
-        quantity: true,
-        discount: true,
-        totalPrice: true,
 
         customer: {
           select: {
@@ -269,11 +339,8 @@ export class CustomerControllerBase {
           },
         },
 
-        product: {
-          select: {
-            id: true,
-          },
-        },
+        status: true,
+        label: true,
       },
     });
     if (results === null) {
