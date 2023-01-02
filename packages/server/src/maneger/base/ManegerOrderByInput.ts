@@ -25,7 +25,7 @@ class ManegerOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  id?: SortOrder;
+  createdAt?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -34,7 +34,7 @@ class ManegerOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  createdAt?: SortOrder;
+  id?: SortOrder;
 
   @ApiProperty({
     required: false,

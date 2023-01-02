@@ -1,7 +1,7 @@
-import { IntFilter } from "../../util/IntFilter";
 import { EmployListRelationFilter } from "../employ/EmployListRelationFilter";
+import { IntFilter } from "../../util/IntFilter";
 
 export type ManegerWhereInput = {
-  id?: IntFilter;
   emploies?: EmployListRelationFilter;
+  id?: IntFilter;
 };

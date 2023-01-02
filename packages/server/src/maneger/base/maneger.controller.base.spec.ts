@@ -19,25 +19,25 @@ import { ManegerService } from "../maneger.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  id: 42,
   createdAt: new Date(),
+  id: 42,
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
-  id: 42,
   createdAt: new Date(),
+  id: 42,
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
   {
-    id: 42,
     createdAt: new Date(),
+    id: 42,
     updatedAt: new Date(),
   },
 ];
 const FIND_ONE_RESULT = {
-  id: 42,
   createdAt: new Date(),
+  id: 42,
   updatedAt: new Date(),
 };
 

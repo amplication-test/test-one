@@ -51,8 +51,8 @@ export class ManegerControllerBase {
     return await this.service.create({
       data: data,
       select: {
-        id: true,
         createdAt: true,
+        id: true,
         updatedAt: true,
       },
     });
@@ -73,8 +73,8 @@ export class ManegerControllerBase {
     return this.service.findMany({
       ...args,
       select: {
-        id: true,
         createdAt: true,
+        id: true,
         updatedAt: true,
       },
     });
@@ -96,8 +96,8 @@ export class ManegerControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
-        id: true,
         createdAt: true,
+        id: true,
         updatedAt: true,
       },
     });
@@ -128,8 +128,8 @@ export class ManegerControllerBase {
         where: params,
         data: data,
         select: {
-          id: true,
           createdAt: true,
+          id: true,
           updatedAt: true,
         },
       });
@@ -159,8 +159,8 @@ export class ManegerControllerBase {
       return await this.service.delete({
         where: params,
         select: {
-          id: true,
           createdAt: true,
+          id: true,
           updatedAt: true,
         },
       });
@@ -190,15 +190,16 @@ export class ManegerControllerBase {
     const results = await this.service.findEmploies(params.id, {
       ...query,
       select: {
-        id: true,
         createdAt: true,
-        updatedAt: true,
+        id: true,
 
         maneger: {
           select: {
             id: true,
           },
         },
+
+        updatedAt: true,
       },
     });
     if (results === null) {

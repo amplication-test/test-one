@@ -11,24 +11,13 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IntFilter } from "../../util/IntFilter";
-import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
 import { EmployListRelationFilter } from "../../employ/base/EmployListRelationFilter";
+import { ValidateNested, IsOptional } from "class-validator";
+import { Type } from "class-transformer";
+import { IntFilter } from "../../util/IntFilter";
 
 @InputType()
 class ManegerWhereInput {
-  @ApiProperty({
-    required: false,
-    type: IntFilter,
-  })
-  @Type(() => IntFilter)
-  @IsOptional()
-  @Field(() => IntFilter, {
-    nullable: true,
-  })
-  id?: IntFilter;
-
   @ApiProperty({
     required: false,
     type: () => EmployListRelationFilter,
@@ -40,6 +29,17 @@ class ManegerWhereInput {
     nullable: true,
   })
   emploies?: EmployListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: IntFilter,
+  })
+  @Type(() => IntFilter)
+  @IsOptional()
+  @Field(() => IntFilter, {
+    nullable: true,
+  })
+  id?: IntFilter;
 }
 
 export { ManegerWhereInput };

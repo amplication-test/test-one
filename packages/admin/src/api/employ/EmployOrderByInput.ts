@@ -1,8 +1,8 @@
 import { SortOrder } from "../../util/SortOrder";
 
 export type EmployOrderByInput = {
-  id?: SortOrder;
   createdAt?: SortOrder;
-  updatedAt?: SortOrder;
+  id?: SortOrder;
   manegerId?: SortOrder;
+  updatedAt?: SortOrder;
 };

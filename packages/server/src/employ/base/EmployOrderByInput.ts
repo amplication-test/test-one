@@ -25,15 +25,6 @@ class EmployOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  id?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
   createdAt?: SortOrder;
 
   @ApiProperty({
@@ -43,7 +34,7 @@ class EmployOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  updatedAt?: SortOrder;
+  id?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -53,6 +44,15 @@ class EmployOrderByInput {
     nullable: true,
   })
   manegerId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  updatedAt?: SortOrder;
 }
 
 export { EmployOrderByInput };

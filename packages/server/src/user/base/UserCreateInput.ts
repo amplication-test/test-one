@@ -45,14 +45,6 @@ class UserCreateInput {
   })
   @IsString()
   @Field(() => String)
-  username!: string;
-
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
   password!: string;
 
   @ApiProperty({
@@ -61,6 +53,14 @@ class UserCreateInput {
   @IsJSON()
   @Field(() => GraphQLJSON)
   roles!: InputJsonValue;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  username!: string;
 }
 
 export { UserCreateInput };
