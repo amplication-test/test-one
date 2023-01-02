@@ -3,8 +3,8 @@ import {
   List,
   Datagrid,
   ListProps,
-  TextField,
   DateField,
+  TextField,
   ReferenceField,
 } from "react-admin";
 import Pagination from "../Components/Pagination";
@@ -20,12 +20,12 @@ export const EmployList = (props: ListProps): React.ReactElement => {
       pagination={<Pagination />}
     >
       <Datagrid rowClick="show">
-        <TextField label="ID" source="id" />
         <DateField source="createdAt" label="Created At" />
-        <DateField source="updatedAt" label="Updated At" />
+        <TextField label="ID" source="id" />
         <ReferenceField label="Maneger" source="maneger.id" reference="Maneger">
           <TextField source={MANEGER_TITLE_FIELD} />
         </ReferenceField>
+        <DateField source="updatedAt" label="Updated At" />
       </Datagrid>
     </List>
   );

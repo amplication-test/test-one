@@ -9,27 +9,33 @@ generator client {
 }
 
 model User {
-  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
   firstName String?
+  id        String   @id @default(cuid())
   lastName  String?
-  username  String   @unique
   password  String
   roles     Json
+  updatedAt DateTime @updatedAt
+  username  String   @unique
 }
 
 model Employ {
-  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String   @id @default(cuid())
   maneger   Maneger? @relation(fields: [manegerId], references: [id])
   manegerId Int?
+  updatedAt DateTime @updatedAt
 }
 
 model Maneger {
-  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
   emploies  Employ[]
+  id        Int      @id @default(autoincrement())
+  updatedAt DateTime @updatedAt
+}
+
+model Dsafa {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
 }

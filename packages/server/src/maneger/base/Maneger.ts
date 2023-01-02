@@ -11,12 +11,29 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsInt, IsDate, ValidateNested, IsOptional } from "class-validator";
+import { IsDate, ValidateNested, IsOptional, IsInt } from "class-validator";
 import { Type } from "class-transformer";
 import { Employ } from "../../employ/base/Employ";
 
 @ObjectType()
 class Maneger {
+  @ApiProperty({
+    required: true,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @Field(() => Date)
+  createdAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Employ],
+  })
+  @ValidateNested()
+  @Type(() => Employ)
+  @IsOptional()
+  emploies?: Array<Employ>;
+
   @ApiProperty({
     required: true,
     type: Number,
@@ -31,24 +48,7 @@ class Maneger {
   @IsDate()
   @Type(() => Date)
   @Field(() => Date)
-  createdAt!: Date;
-
-  @ApiProperty({
-    required: true,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
   updatedAt!: Date;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Employ],
-  })
-  @ValidateNested()
-  @Type(() => Employ)
-  @IsOptional()
-  emploies?: Array<Employ>;
 }
 
 export { Maneger };

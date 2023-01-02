@@ -1,8 +1,8 @@
 import { Maneger } from "../maneger/Maneger";
 
 export type Employ = {
-  id: string;
   createdAt: Date;
-  updatedAt: Date;
+  id: string;
   maneger?: Maneger | null;
+  updatedAt: Date;
 };
