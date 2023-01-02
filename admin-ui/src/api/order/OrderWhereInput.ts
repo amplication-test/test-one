@@ -1,12 +1,14 @@
 import { StringFilter } from "../../util/StringFilter";
-import { DateTimeFilter } from "../../util/DateTimeFilter";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
+import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { CustomerWhereUniqueInput } from "../customer/CustomerWhereUniqueInput";
+import { ProductWhereUniqueInput } from "../product/ProductWhereUniqueInput";
 
 export type OrderWhereInput = {
   id?: StringFilter;
-  createdAt?: DateTimeFilter;
-  updatedAt?: DateTimeFilter;
+  quantity?: IntNullableFilter;
+  discount?: FloatNullableFilter;
+  totalPrice?: IntNullableFilter;
   customer?: CustomerWhereUniqueInput;
-  status?: "pending" | "inProgress" | "done";
-  label?: "fragile";
+  product?: ProductWhereUniqueInput;
 };
