@@ -32,9 +32,3 @@ model Maneger {
   updatedAt DateTime @updatedAt
   emploies  Employ[]
 }
-
-model Dsafa {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}

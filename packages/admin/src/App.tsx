@@ -17,10 +17,6 @@ import { ManegerList } from "./maneger/ManegerList";
 import { ManegerCreate } from "./maneger/ManegerCreate";
 import { ManegerEdit } from "./maneger/ManegerEdit";
 import { ManegerShow } from "./maneger/ManegerShow";
-import { DsafaList } from "./dsafa/DsafaList";
-import { DsafaCreate } from "./dsafa/DsafaCreate";
-import { DsafaEdit } from "./dsafa/DsafaEdit";
-import { DsafaShow } from "./dsafa/DsafaShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -67,13 +63,6 @@ const App = (): React.ReactElement => {
           edit={ManegerEdit}
           create={ManegerCreate}
           show={ManegerShow}
-        />
-        <Resource
-          name="Dsafa"
-          list={DsafaList}
-          edit={DsafaEdit}
-          create={DsafaCreate}
-          show={DsafaShow}
         />
       </Admin>
     </div>

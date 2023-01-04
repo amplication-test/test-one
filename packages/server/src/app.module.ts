@@ -4,7 +4,6 @@ import { MorganInterceptor, MorganModule } from "nest-morgan";
 import { UserModule } from "./user/user.module";
 import { EmployModule } from "./employ/employ.module";
 import { ManegerModule } from "./maneger/maneger.module";
-import { DsafaModule } from "./dsafa/dsafa.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -21,7 +20,6 @@ import { GraphQLModule } from "@nestjs/graphql";
     UserModule,
     EmployModule,
     ManegerModule,
-    DsafaModule,
     ACLModule,
     AuthModule,
     HealthModule,
