@@ -11,14 +11,46 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { IsInt, IsOptional, IsNumber, ValidateNested } from "class-validator";
 import { CustomerWhereUniqueInput } from "../../customer/base/CustomerWhereUniqueInput";
-import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
-import { EnumOrderStatus } from "./EnumOrderStatus";
-import { EnumOrderLabel } from "./EnumOrderLabel";
+import { ProductWhereUniqueInput } from "../../product/base/ProductWhereUniqueInput";
 
 @InputType()
 class OrderUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  quantity?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsNumber()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  discount?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  totalPrice?: number | null;
+
   @ApiProperty({
     required: false,
     type: () => CustomerWhereUniqueInput,
@@ -29,29 +61,19 @@ class OrderUpdateInput {
   @Field(() => CustomerWhereUniqueInput, {
     nullable: true,
   })
-  customer?: CustomerWhereUniqueInput;
+  customer?: CustomerWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
-    enum: EnumOrderStatus,
+    type: () => ProductWhereUniqueInput,
   })
-  @IsEnum(EnumOrderStatus)
+  @ValidateNested()
+  @Type(() => ProductWhereUniqueInput)
   @IsOptional()
-  @Field(() => EnumOrderStatus, {
+  @Field(() => ProductWhereUniqueInput, {
     nullable: true,
   })
-  status?: "pending" | "inProgress" | "done";
-
-  @ApiProperty({
-    required: false,
-    enum: EnumOrderLabel,
-  })
-  @IsEnum(EnumOrderLabel)
-  @IsOptional()
-  @Field(() => EnumOrderLabel, {
-    nullable: true,
-  })
-  label?: "fragile" | null;
+  product?: ProductWhereUniqueInput | null;
 }
 
-export { OrderUpdateInput as OrderUpdateInput };
+export { OrderUpdateInput };
