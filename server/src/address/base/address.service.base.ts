@@ -10,7 +10,7 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-import { Prisma, Address, Customer } from "generated-prisma-client";
+import { Prisma, Address, Customer } from "@prisma/client";
 
 export class AddressServiceBase {
   constructor(protected readonly prisma: PrismaService) {}

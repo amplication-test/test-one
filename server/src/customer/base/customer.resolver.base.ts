@@ -19,7 +19,6 @@ import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
-import { Public } from "../../decorators/public.decorator";
 import { CreateCustomerArgs } from "./CreateCustomerArgs";
 import { UpdateCustomerArgs } from "./UpdateCustomerArgs";
 import { DeleteCustomerArgs } from "./DeleteCustomerArgs";
@@ -28,7 +27,7 @@ import { CustomerFindUniqueArgs } from "./CustomerFindUniqueArgs";
 import { Customer } from "./Customer";
 import { OrderFindManyArgs } from "../../order/base/OrderFindManyArgs";
 import { Order } from "../../order/base/Order";
-import { Organization } from "../../organization/base/Organization";
+import { Address } from "../../address/base/Address";
 import { CustomerService } from "../customer.service";
 
 @graphql.Resolver(() => Customer)
@@ -103,15 +102,9 @@ export class CustomerResolverBase {
       data: {
         ...args.data,
 
-        organization: args.data.organization
+        address: args.data.address
           ? {
-              connect: args.data.organization,
-            }
-          : undefined,
-
-        vipOrganization: args.data.vipOrganization
-          ? {
-              connect: args.data.vipOrganization,
+              connect: args.data.address,
             }
           : undefined,
       },
@@ -134,15 +127,9 @@ export class CustomerResolverBase {
         data: {
           ...args.data,
 
-          organization: args.data.organization
+          address: args.data.address
             ? {
-                connect: args.data.organization,
-              }
-            : undefined,
-
-          vipOrganization: args.data.vipOrganization
-            ? {
-                connect: args.data.vipOrganization,
+                connect: args.data.address,
               }
             : undefined,
         },
@@ -178,8 +165,13 @@ export class CustomerResolverBase {
     }
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => [Order])
+  @nestAccessControl.UseRoles({
+    resource: "Order",
+    action: "read",
+    possession: "any",
+  })
   async orders(
     @graphql.Parent() parent: Customer,
     @graphql.Args() args: OrderFindManyArgs
@@ -194,34 +186,14 @@ export class CustomerResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => Organization, { nullable: true })
+  @graphql.ResolveField(() => Address, { nullable: true })
   @nestAccessControl.UseRoles({
-    resource: "Organization",
+    resource: "Address",
     action: "read",
     possession: "any",
   })
-  async organization(
-    @graphql.Parent() parent: Customer
-  ): Promise<Organization | null> {
-    const result = await this.service.getOrganization(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => Organization, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Organization",
-    action: "read",
-    possession: "any",
-  })
-  async vipOrganization(
-    @graphql.Parent() parent: Customer
-  ): Promise<Organization | null> {
-    const result = await this.service.getVipOrganization(parent.id);
+  async address(@graphql.Parent() parent: Customer): Promise<Address | null> {
+    const result = await this.service.getAddress(parent.id);
 
     if (!result) {
       return null;
