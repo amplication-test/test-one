@@ -11,34 +11,13 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-
-import {
-  IsString,
-  IsOptional,
-  IsBoolean,
-  IsDate,
-  IsNumber,
-  IsInt,
-  IsEnum,
-  ValidateNested,
-} from "class-validator";
-
-import { Type } from "class-transformer";
-import { EnumCustomerFavoriteColors } from "./EnumCustomerFavoriteColors";
-import { EnumCustomerCustomerType } from "./EnumCustomerCustomerType";
-import { OrganizationWhereUniqueInput } from "../../organization/base/OrganizationWhereUniqueInput";
+import { IsString, IsOptional, ValidateNested } from "class-validator";
 import { OrderCreateNestedManyWithoutCustomersInput } from "./OrderCreateNestedManyWithoutCustomersInput";
+import { Type } from "class-transformer";
+import { AddressWhereUniqueInput } from "../../address/base/AddressWhereUniqueInput";
 
 @InputType()
 class CustomerCreateInput {
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  email!: string;
-
   @ApiProperty({
     required: false,
     type: String,
@@ -59,122 +38,7 @@ class CustomerCreateInput {
   @Field(() => String, {
     nullable: true,
   })
-  lastName?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @IsOptional()
-  @Field(() => Boolean, {
-    nullable: true,
-  })
-  isVip?: boolean | null;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
-  birthData?: Date | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsNumber()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  averageSale?: number | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  favoriteNumber?: number | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  geoLocation?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  comments?: string | null;
-
-  @ApiProperty({
-    required: false,
-    enum: EnumCustomerFavoriteColors,
-    isArray: true,
-  })
-  @IsEnum(EnumCustomerFavoriteColors, {
-    each: true,
-  })
-  @IsOptional()
-  @Field(() => [EnumCustomerFavoriteColors], {
-    nullable: true,
-  })
-  favoriteColors?: Array<"red" | "green" | "purple" | "yellow">;
-
-  @ApiProperty({
-    required: false,
-    enum: EnumCustomerCustomerType,
-  })
-  @IsEnum(EnumCustomerCustomerType)
-  @IsOptional()
-  @Field(() => EnumCustomerCustomerType, {
-    nullable: true,
-  })
-  customerType?: "platinum" | "gold" | "bronze" | "regular" | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => OrganizationWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => OrganizationWhereUniqueInput)
-  @IsOptional()
-  @Field(() => OrganizationWhereUniqueInput, {
-    nullable: true,
-  })
-  organization?: OrganizationWhereUniqueInput | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => OrganizationWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => OrganizationWhereUniqueInput)
-  @IsOptional()
-  @Field(() => OrganizationWhereUniqueInput, {
-    nullable: true,
-  })
-  vipOrganization?: OrganizationWhereUniqueInput | null;
+  email?: string | null;
 
   @ApiProperty({
     required: false,
@@ -187,6 +51,40 @@ class CustomerCreateInput {
     nullable: true,
   })
   orders?: OrderCreateNestedManyWithoutCustomersInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  lastName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  phone?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => AddressWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => AddressWhereUniqueInput)
+  @IsOptional()
+  @Field(() => AddressWhereUniqueInput, {
+    nullable: true,
+  })
+  address?: AddressWhereUniqueInput | null;
 }
 
-export { CustomerCreateInput as CustomerCreateInput };
+export { CustomerCreateInput };
