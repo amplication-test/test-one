@@ -10,7 +10,7 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-import { Prisma, Employ, Maneger } from "generated-prisma-client";
+import { Prisma, Employ, Maneger } from "@prisma/client";
 
 export class EmployServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
