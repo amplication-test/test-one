@@ -5,7 +5,6 @@ datasource postgres {
 
 generator client {
   provider = "prisma-client-js"
-  output   = "./generated-prisma-client"
 }
 
 model User {
@@ -32,4 +31,10 @@ model Maneger {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   emploies  Employ[]
+}
+
+model Dsafa {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
