@@ -1,1 +1,2 @@
 server/src/address/base/address.resolver.base.ts
+packages/server/src/prisma/prisma.service.ts
