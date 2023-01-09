@@ -13,11 +13,11 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested, IsEnum } from "class-validator";
-import { DateTimeFilter } from "../../util/DateTimeFilter";
+import { IsOptional, ValidateNested } from "class-validator";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
+import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { CustomerWhereUniqueInput } from "../../customer/base/CustomerWhereUniqueInput";
-import { EnumOrderStatus } from "./EnumOrderStatus";
-import { EnumOrderLabel } from "./EnumOrderLabel";
+import { ProductWhereUniqueInput } from "../../product/base/ProductWhereUniqueInput";
 
 @InputType()
 class OrderWhereInput {
@@ -34,25 +34,36 @@ class OrderWhereInput {
 
   @ApiProperty({
     required: false,
-    type: DateTimeFilter,
+    type: IntNullableFilter,
   })
-  @Type(() => DateTimeFilter)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => DateTimeFilter, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  createdAt?: DateTimeFilter;
+  quantity?: IntNullableFilter;
 
   @ApiProperty({
     required: false,
-    type: DateTimeFilter,
+    type: FloatNullableFilter,
   })
-  @Type(() => DateTimeFilter)
+  @Type(() => FloatNullableFilter)
   @IsOptional()
-  @Field(() => DateTimeFilter, {
+  @Field(() => FloatNullableFilter, {
     nullable: true,
   })
-  updatedAt?: DateTimeFilter;
+  discount?: FloatNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: IntNullableFilter,
+  })
+  @Type(() => IntNullableFilter)
+  @IsOptional()
+  @Field(() => IntNullableFilter, {
+    nullable: true,
+  })
+  totalPrice?: IntNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -68,25 +79,15 @@ class OrderWhereInput {
 
   @ApiProperty({
     required: false,
-    enum: EnumOrderStatus,
+    type: () => ProductWhereUniqueInput,
   })
-  @IsEnum(EnumOrderStatus)
+  @ValidateNested()
+  @Type(() => ProductWhereUniqueInput)
   @IsOptional()
-  @Field(() => EnumOrderStatus, {
+  @Field(() => ProductWhereUniqueInput, {
     nullable: true,
   })
-  status?: "pending" | "inProgress" | "done";
-
-  @ApiProperty({
-    required: false,
-    enum: EnumOrderLabel,
-  })
-  @IsEnum(EnumOrderLabel)
-  @IsOptional()
-  @Field(() => EnumOrderLabel, {
-    nullable: true,
-  })
-  label?: "fragile";
+  product?: ProductWhereUniqueInput;
 }
 
-export { OrderWhereInput as OrderWhereInput };
+export { OrderWhereInput };
