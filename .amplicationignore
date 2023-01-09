@@ -1,3 +1,1 @@
-server/src/address/base/address.resolver.base.ts
-packages/server/src/prisma/prisma.service.ts
-packages/server/src/swagger.ts
+server/src/organization/base/CreateOrganizationArgs.ts
