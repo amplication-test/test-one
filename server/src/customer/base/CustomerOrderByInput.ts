@@ -52,15 +52,6 @@ class CustomerOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  email?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
   firstName?: SortOrder;
 
   @ApiProperty({
@@ -79,7 +70,7 @@ class CustomerOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  isVip?: SortOrder;
+  email?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -88,7 +79,7 @@ class CustomerOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  birthData?: SortOrder;
+  phone?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -97,7 +88,7 @@ class CustomerOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  averageSale?: SortOrder;
+  addressId?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -106,7 +97,7 @@ class CustomerOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  favoriteNumber?: SortOrder;
+  gfh?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -115,7 +106,7 @@ class CustomerOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  geoLocation?: SortOrder;
+  sag?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -124,43 +115,7 @@ class CustomerOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  comments?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
-  favoriteColors?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
-  customerType?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
-  organizationId?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
-  vipOrganizationId?: SortOrder;
+  ew?: SortOrder;
 }
 
-export { CustomerOrderByInput as CustomerOrderByInput };
+export { CustomerOrderByInput };

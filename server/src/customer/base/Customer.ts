@@ -11,33 +11,20 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-
-import {
-  IsInt,
-  IsDate,
-  IsString,
-  IsOptional,
-  IsBoolean,
-  IsNumber,
-  IsEnum,
-  ValidateNested,
-} from "class-validator";
-
+import { IsString, IsDate, IsOptional, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
-import { EnumCustomerFavoriteColors } from "./EnumCustomerFavoriteColors";
-import { EnumCustomerCustomerType } from "./EnumCustomerCustomerType";
-import { Organization } from "../../organization/base/Organization";
 import { Order } from "../../order/base/Order";
+import { Address } from "../../address/base/Address";
 
 @ObjectType()
 class Customer {
   @ApiProperty({
     required: true,
-    type: Number,
+    type: String,
   })
-  @IsInt()
-  @Field(() => Number)
-  id!: number;
+  @IsString()
+  @Field(() => String)
+  id!: string;
 
   @ApiProperty({
     required: true,
@@ -54,14 +41,6 @@ class Customer {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
-
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  email!: string;
 
   @ApiProperty({
     required: false,
@@ -87,47 +66,14 @@ class Customer {
 
   @ApiProperty({
     required: false,
-    type: Boolean,
+    type: String,
   })
-  @IsBoolean()
+  @IsString()
   @IsOptional()
-  @Field(() => Boolean, {
+  @Field(() => String, {
     nullable: true,
   })
-  isVip!: boolean | null;
-
-  @ApiProperty({
-    required: false,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
-  birthData!: Date | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsNumber()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  averageSale!: number | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  favoriteNumber!: number | null;
+  email!: string | null;
 
   @ApiProperty({
     required: false,
@@ -138,61 +84,7 @@ class Customer {
   @Field(() => String, {
     nullable: true,
   })
-  geoLocation!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  comments!: string | null;
-
-  @ApiProperty({
-    required: false,
-    enum: EnumCustomerFavoriteColors,
-    isArray: true,
-  })
-  @IsEnum(EnumCustomerFavoriteColors, {
-    each: true,
-  })
-  @IsOptional()
-  @Field(() => [EnumCustomerFavoriteColors], {
-    nullable: true,
-  })
-  favoriteColors?: Array<"red" | "green" | "purple" | "yellow">;
-
-  @ApiProperty({
-    required: false,
-    enum: EnumCustomerCustomerType,
-  })
-  @IsEnum(EnumCustomerCustomerType)
-  @IsOptional()
-  @Field(() => EnumCustomerCustomerType, {
-    nullable: true,
-  })
-  customerType?: "platinum" | "gold" | "bronze" | "regular" | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => Organization,
-  })
-  @ValidateNested()
-  @Type(() => Organization)
-  @IsOptional()
-  organization?: Organization | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => Organization,
-  })
-  @ValidateNested()
-  @Type(() => Organization)
-  @IsOptional()
-  vipOrganization?: Organization | null;
+  phone!: string | null;
 
   @ApiProperty({
     required: false,
@@ -202,6 +94,48 @@ class Customer {
   @Type(() => Order)
   @IsOptional()
   orders?: Array<Order>;
+
+  @ApiProperty({
+    required: false,
+    type: () => Address,
+  })
+  @ValidateNested()
+  @Type(() => Address)
+  @IsOptional()
+  address?: Address | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  gfh!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  sag!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  ew!: string | null;
 }
 
-export { Customer as Customer };
+export { Customer };

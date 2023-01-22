@@ -19,62 +19,54 @@ import { CustomerService } from "../customer.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  id: 42,
+  id: "exampleId",
   createdAt: new Date(),
   updatedAt: new Date(),
-  email: "exampleEmail",
   firstName: "exampleFirstName",
   lastName: "exampleLastName",
-  isVip: "true",
-  birthData: new Date(),
-  averageSale: 42.42,
-  favoriteNumber: 42,
-  geoLocation: "exampleGeoLocation",
-  comments: "exampleComments",
+  email: "exampleEmail",
+  phone: "examplePhone",
+  gfh: "exampleGfh",
+  sag: "exampleSag",
+  ew: "exampleEw",
 };
 const CREATE_RESULT = {
-  id: 42,
+  id: "exampleId",
   createdAt: new Date(),
   updatedAt: new Date(),
-  email: "exampleEmail",
   firstName: "exampleFirstName",
   lastName: "exampleLastName",
-  isVip: "true",
-  birthData: new Date(),
-  averageSale: 42.42,
-  favoriteNumber: 42,
-  geoLocation: "exampleGeoLocation",
-  comments: "exampleComments",
+  email: "exampleEmail",
+  phone: "examplePhone",
+  gfh: "exampleGfh",
+  sag: "exampleSag",
+  ew: "exampleEw",
 };
 const FIND_MANY_RESULT = [
   {
-    id: 42,
+    id: "exampleId",
     createdAt: new Date(),
     updatedAt: new Date(),
-    email: "exampleEmail",
     firstName: "exampleFirstName",
     lastName: "exampleLastName",
-    isVip: "true",
-    birthData: new Date(),
-    averageSale: 42.42,
-    favoriteNumber: 42,
-    geoLocation: "exampleGeoLocation",
-    comments: "exampleComments",
+    email: "exampleEmail",
+    phone: "examplePhone",
+    gfh: "exampleGfh",
+    sag: "exampleSag",
+    ew: "exampleEw",
   },
 ];
 const FIND_ONE_RESULT = {
-  id: 42,
+  id: "exampleId",
   createdAt: new Date(),
   updatedAt: new Date(),
-  email: "exampleEmail",
   firstName: "exampleFirstName",
   lastName: "exampleLastName",
-  isVip: "true",
-  birthData: new Date(),
-  averageSale: 42.42,
-  favoriteNumber: 42,
-  geoLocation: "exampleGeoLocation",
-  comments: "exampleComments",
+  email: "exampleEmail",
+  phone: "examplePhone",
+  gfh: "exampleGfh",
+  sag: "exampleSag",
+  ew: "exampleEw",
 };
 
 const service = {
@@ -161,7 +153,6 @@ describe("Customer", () => {
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
-        birthData: CREATE_RESULT.birthData.toISOString(),
       });
   });
 
@@ -174,7 +165,6 @@ describe("Customer", () => {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
-          birthData: FIND_MANY_RESULT[0].birthData.toISOString(),
         },
       ]);
   });
@@ -198,7 +188,6 @@ describe("Customer", () => {
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
-        birthData: FIND_ONE_RESULT.birthData.toISOString(),
       });
   });
 
@@ -212,7 +201,6 @@ describe("Customer", () => {
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
-        birthData: CREATE_RESULT.birthData.toISOString(),
       })
       .then(function () {
         agent

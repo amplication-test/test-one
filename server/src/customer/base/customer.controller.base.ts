@@ -21,7 +21,6 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { CustomerService } from "../customer.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { Public } from "../../decorators/public.decorator";
 import { CustomerCreateInput } from "./CustomerCreateInput";
 import { CustomerWhereInput } from "./CustomerWhereInput";
 import { CustomerWhereUniqueInput } from "./CustomerWhereUniqueInput";
@@ -31,7 +30,7 @@ import { Customer } from "./Customer";
 import { OrderFindManyArgs } from "../../order/base/OrderFindManyArgs";
 import { Order } from "../../order/base/Order";
 import { OrderWhereUniqueInput } from "../../order/base/OrderWhereUniqueInput";
-@swagger.ApiBasicAuth()
+@swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class CustomerControllerBase {
   constructor(
@@ -53,15 +52,9 @@ export class CustomerControllerBase {
       data: {
         ...data,
 
-        organization: data.organization
+        address: data.address
           ? {
-              connect: data.organization,
-            }
-          : undefined,
-
-        vipOrganization: data.vipOrganization
-          ? {
-              connect: data.vipOrganization,
+              connect: data.address,
             }
           : undefined,
       },
@@ -69,29 +62,20 @@ export class CustomerControllerBase {
         id: true,
         createdAt: true,
         updatedAt: true,
-        email: true,
         firstName: true,
         lastName: true,
-        isVip: true,
-        birthData: true,
-        averageSale: true,
-        favoriteNumber: true,
-        geoLocation: true,
-        comments: true,
-        favoriteColors: true,
-        customerType: true,
+        email: true,
+        phone: true,
 
-        organization: {
+        address: {
           select: {
             id: true,
           },
         },
 
-        vipOrganization: {
-          select: {
-            id: true,
-          },
-        },
+        gfh: true,
+        sag: true,
+        ew: true,
       },
     });
   }
@@ -114,29 +98,20 @@ export class CustomerControllerBase {
         id: true,
         createdAt: true,
         updatedAt: true,
-        email: true,
         firstName: true,
         lastName: true,
-        isVip: true,
-        birthData: true,
-        averageSale: true,
-        favoriteNumber: true,
-        geoLocation: true,
-        comments: true,
-        favoriteColors: true,
-        customerType: true,
+        email: true,
+        phone: true,
 
-        organization: {
+        address: {
           select: {
             id: true,
           },
         },
 
-        vipOrganization: {
-          select: {
-            id: true,
-          },
-        },
+        gfh: true,
+        sag: true,
+        ew: true,
       },
     });
   }
@@ -160,29 +135,20 @@ export class CustomerControllerBase {
         id: true,
         createdAt: true,
         updatedAt: true,
-        email: true,
         firstName: true,
         lastName: true,
-        isVip: true,
-        birthData: true,
-        averageSale: true,
-        favoriteNumber: true,
-        geoLocation: true,
-        comments: true,
-        favoriteColors: true,
-        customerType: true,
+        email: true,
+        phone: true,
 
-        organization: {
+        address: {
           select: {
             id: true,
           },
         },
 
-        vipOrganization: {
-          select: {
-            id: true,
-          },
-        },
+        gfh: true,
+        sag: true,
+        ew: true,
       },
     });
     if (result === null) {
@@ -213,15 +179,9 @@ export class CustomerControllerBase {
         data: {
           ...data,
 
-          organization: data.organization
+          address: data.address
             ? {
-                connect: data.organization,
-              }
-            : undefined,
-
-          vipOrganization: data.vipOrganization
-            ? {
-                connect: data.vipOrganization,
+                connect: data.address,
               }
             : undefined,
         },
@@ -229,29 +189,20 @@ export class CustomerControllerBase {
           id: true,
           createdAt: true,
           updatedAt: true,
-          email: true,
           firstName: true,
           lastName: true,
-          isVip: true,
-          birthData: true,
-          averageSale: true,
-          favoriteNumber: true,
-          geoLocation: true,
-          comments: true,
-          favoriteColors: true,
-          customerType: true,
+          email: true,
+          phone: true,
 
-          organization: {
+          address: {
             select: {
               id: true,
             },
           },
 
-          vipOrganization: {
-            select: {
-              id: true,
-            },
-          },
+          gfh: true,
+          sag: true,
+          ew: true,
         },
       });
     } catch (error) {
@@ -283,29 +234,20 @@ export class CustomerControllerBase {
           id: true,
           createdAt: true,
           updatedAt: true,
-          email: true,
           firstName: true,
           lastName: true,
-          isVip: true,
-          birthData: true,
-          averageSale: true,
-          favoriteNumber: true,
-          geoLocation: true,
-          comments: true,
-          favoriteColors: true,
-          customerType: true,
+          email: true,
+          phone: true,
 
-          organization: {
+          address: {
             select: {
               id: true,
             },
           },
 
-          vipOrganization: {
-            select: {
-              id: true,
-            },
-          },
+          gfh: true,
+          sag: true,
+          ew: true,
         },
       });
     } catch (error) {
@@ -318,7 +260,12 @@ export class CustomerControllerBase {
     }
   }
 
-  @Public()
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @nestAccessControl.UseRoles({
+    resource: "Order",
+    action: "read",
+    possession: "any",
+  })
   @common.Get("/:id/orders")
   @ApiNestedQuery(OrderFindManyArgs)
   async findManyOrders(
@@ -332,6 +279,9 @@ export class CustomerControllerBase {
         id: true,
         createdAt: true,
         updatedAt: true,
+        quantity: true,
+        discount: true,
+        totalPrice: true,
 
         customer: {
           select: {
@@ -339,8 +289,11 @@ export class CustomerControllerBase {
           },
         },
 
-        status: true,
-        label: true,
+        product: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (results === null) {
